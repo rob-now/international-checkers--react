@@ -23,18 +23,27 @@ class CheckersView extends Component {
       <div className="Checkers__Board">
         {
           this.state.boardState.map(
-            (row, index) => {
+            (row, rowIndex) => {
               return (
                 <div
-                  key={`Row-${index}`}
+                  key={`Row-${rowIndex}`}
                   className="Checkers__Row"
                 >
                   {
                     row.map(
-                      (square, index) =>
+                      (square, squareIndex) =>
                         <div
-                          key={`Square-${index}`}
-                          className="Checkers__Square"
+                          key={`Square-${squareIndex}`}
+                          className={rowIndex % 2 === 0 ?
+                            (squareIndex % 2 === 0 ?
+                                "Checkers__Square--Light" :
+                                "Checkers__Square--Dark"
+                            ) :
+                            (squareIndex % 2 === 0 ?
+                                "Checkers__Square--Dark" :
+                                "Checkers__Square--Light"
+                            )
+                          }
                         >
                           {square}
                         </div>

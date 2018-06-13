@@ -10,12 +10,20 @@
     justify-content: center;
 }
 
-.Checkers__Square {
+.Checkers__Square--Light,
+.Checkers__Square--Dark {
     width: 10%;
     height: 100%;
-    background: grey;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.Checkers__Square--Light {
+    background: whitesmoke;
+}
+
+.Checkers__Square--Dark {
+    background: grey;
 }
