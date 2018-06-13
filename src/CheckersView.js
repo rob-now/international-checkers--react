@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import './CheckersView.css'
 import 'font-awesome/css/font-awesome.min.css'
 
@@ -19,49 +19,102 @@ class CheckersView extends Component {
     ]
   }
 
+  makeLineNumbers = () =>
+    <div className="Checkers__NumbersLine">
+      <div className="break">
+      </div>
+      {
+        this.state.boardState.map(
+          (row, rowIndex) =>
+            <div
+              key={rowIndex + 1}
+              className="Checkers__NumbersCell"
+            >
+              {rowIndex + 1}
+            </div>
+        )
+      }
+    </div>
+
+  makeLineLetters = () => {
+    const letters = ['a','b','c','d','e','f','g','h','i','j']
+    return <div className="Checkers__LettersLine">
+      {
+        letters.map(
+          (letter, index) =>
+            <div
+              key={index}
+              className="Checkers__LettersCell"
+            >
+              {letter.toUpperCase()}
+            </div>
+        )
+      }
+    </div>
+  }
+
   makeBoard = () => {
     return (
-      <div className="Checkers__Board">
-        {
-          this.state.boardState.map(
-            (row, rowIndex) => {
-              return (
-                <div
-                  key={`Row-${rowIndex}`}
-                  className="Checkers__Row"
-                >
-                  {
-                    row.map(
-                      (square, squareIndex) =>
-                        <div
-                          key={`Square-${rowIndex}-${squareIndex}`}
-                          className={rowIndex % 2 === 0 ?
-                            (squareIndex % 2 === 0 ?
-                                "Checkers__Square--Light" :
-                                "Checkers__Square--Dark"
-                            ) :
-                            (squareIndex % 2 === 0 ?
-                                "Checkers__Square--Dark" :
-                                "Checkers__Square--Light"
-                            )
-                          }
-                        >
-                          {
-                            square === 'w' ?
-                              <i className="fas fa-circle fa-4x fa-light"/> :
-                              square === 'b' ?
-                                <i className="fas fa-circle fa-4x fa-dark"/> :
-                                undefined
-                          }
-                        </div>
+      <Fragment>
+
+        <div className="Checkers__Board--Container">
+          {
+            this.makeLineNumbers()
+          }
+          <div className="Checkers__Board--InnerContainer">
+            {
+              this.makeLineLetters()
+            }
+            <div className="Checkers__Board">
+              {
+                this.state.boardState.map(
+                  (row, rowIndex) => {
+                    return (
+                      <div
+                        key={`Row-${rowIndex}`}
+                        className="Checkers__Row"
+                      >
+                        {
+                          row.map(
+                            (square, squareIndex) =>
+                              <div
+                                key={`Square-${rowIndex}-${squareIndex}`}
+                                className={rowIndex % 2 === 0 ?
+                                  (squareIndex % 2 === 0 ?
+                                      "Checkers__Square--Light" :
+                                      "Checkers__Square--Dark"
+                                  ) :
+                                  (squareIndex % 2 === 0 ?
+                                      "Checkers__Square--Dark" :
+                                      "Checkers__Square--Light"
+                                  )
+                                }
+                              >
+                                {
+                                  square === 'w' ?
+                                    <i className="fas fa-circle fa-4x fa-light"/> :
+                                    square === 'b' ?
+                                      <i className="fas fa-circle fa-4x fa-dark"/> :
+                                      undefined
+                                }
+                              </div>
+                          )
+                        }
+                      </div>
                     )
                   }
-                </div>
-              )
+                )
+              }
+            </div>
+            {
+              this.makeLineLetters()
             }
-          )
-        }
-      </div>
+          </div>
+          {
+            this.makeLineNumbers()
+          }
+        </div>
+      </Fragment>
     )
   }
 

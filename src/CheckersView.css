@@ -1,7 +1,41 @@
+.Checkers__Board--Container {
+    display: flex;
+    justify-content: center;
+    /*min-width: 900px;*/
+}
+
+.Checkers__LettersLine,
+.break {
+    height: 75px;
+    display: flex;
+    /*align-self: ;*/
+    /*width: 750px;*/
+    /*margin: 0 auto;*/
+}
+
+.Checkers__NumbersLine {
+    width: 75px;
+}
+
+.Checkers__NumbersCell,
+.Checkers__LettersCell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Checkers__NumbersCell {
+    height: 75px;
+}
+
+.Checkers__LettersCell {
+    width: 75px;
+}
+
 .Checkers__Board {
-    margin: 0 auto;
-    width: 800px;
-    height: 800px;
+    /*margin: 0 auto;*/
+    width: 750px;
+    height: 750px;
 }
 
 .Checkers__Row {
