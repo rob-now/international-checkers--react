@@ -1,0 +1,17 @@
+.Checkers__Board {
+    margin: 0 auto;
+    width: 800px;
+    height: 800px;
+}
+
+.Checkers__Row {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.Checkers__Square {
+    width: 10%;
+    height: 100%;
+    background: grey;
+}
