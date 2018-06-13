@@ -25,12 +25,12 @@ class CheckersView extends Component {
       </div>
       {
         this.state.boardState.map(
-          (row, rowIndex) =>
+          (row, index) =>
             <div
-              key={rowIndex + 1}
+              key={index}
               className="Checkers__NumbersCell"
             >
-              {rowIndex + 1}
+              {this.state.boardState.length - index}
             </div>
         )
       }
