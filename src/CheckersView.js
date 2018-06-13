@@ -18,106 +18,34 @@ class CheckersView extends Component {
     ]
   }
 
-  render() {
+  makeBoard = () => {
     return (
       <div className="Checkers__Board">
-        <div className="Checkers__Row">
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-        </div>
-        <div className="Checkers__Row">
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-        </div>
-        <div className="Checkers__Row">
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-          <div className="Checkers__Square">
-
-          </div>
-        </div>
+        {
+          this.state.boardState.map(
+            row => {
+              return (
+                <div className="Checkers__Row">
+                  {
+                    row.map(
+                      square =>
+                        <div className="Checkers__Square">
+                          {square}
+                        </div>
+                    )
+                  }
+                </div>
+              )
+            }
+          )
+        }
       </div>
+    )
+  }
+
+  render() {
+    return (
+      this.makeBoard()
     )
   }
 }
