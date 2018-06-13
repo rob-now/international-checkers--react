@@ -45,7 +45,13 @@ class CheckersView extends Component {
                             )
                           }
                         >
-                          {square}
+                          {
+                            square === 'w' ?
+                              'white' :
+                              square === 'b'
+                                ? 'black' :
+                                undefined
+                          }
                         </div>
                     )
                   }
