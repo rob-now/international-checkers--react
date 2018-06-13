@@ -33,7 +33,7 @@ class CheckersView extends Component {
                     row.map(
                       (square, squareIndex) =>
                         <div
-                          key={`Square-${squareIndex}`}
+                          key={`Square-${rowIndex}-${squareIndex}`}
                           className={rowIndex % 2 === 0 ?
                             (squareIndex % 2 === 0 ?
                                 "Checkers__Square--Light" :
