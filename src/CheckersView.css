@@ -1,20 +1,17 @@
 .Checkers__Board--Container {
     display: flex;
     justify-content: center;
-    /*min-width: 900px;*/
+    min-width: 800px;
 }
 
 .Checkers__LettersLine,
 .break {
-    height: 75px;
+    height: 65px;
     display: flex;
-    /*align-self: ;*/
-    /*width: 750px;*/
-    /*margin: 0 auto;*/
 }
 
 .Checkers__NumbersLine {
-    width: 75px;
+    width: 65px;
 }
 
 .Checkers__NumbersCell,
@@ -25,17 +22,16 @@
 }
 
 .Checkers__NumbersCell {
-    height: 75px;
+    height: 65px;
 }
 
 .Checkers__LettersCell {
-    width: 75px;
+    width: 65px;
 }
 
 .Checkers__Board {
-    /*margin: 0 auto;*/
-    width: 750px;
-    height: 750px;
+    width: 650px;
+    height: 650px;
 }
 
 .Checkers__Row {
@@ -59,7 +55,7 @@
 }
 
 .Checkers__Square--Dark {
-    background: grey;
+    background: #808080;
 }
 
 .fa-light {

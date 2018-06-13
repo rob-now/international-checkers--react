@@ -37,7 +37,7 @@ class CheckersView extends Component {
     </div>
 
   makeLineLetters = () => {
-    const letters = ['a','b','c','d','e','f','g','h','i','j']
+    const letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
     return <div className="Checkers__LettersLine">
       {
         letters.map(
@@ -92,9 +92,9 @@ class CheckersView extends Component {
                               >
                                 {
                                   square === 'w' ?
-                                    <i className="fas fa-circle fa-4x fa-light"/> :
+                                    <i className="fas fa-circle fa-3x fa-light"/> :
                                     square === 'b' ?
-                                      <i className="fas fa-circle fa-4x fa-dark"/> :
+                                      <i className="fas fa-circle fa-3x fa-dark"/> :
                                       undefined
                                 }
                               </div>
