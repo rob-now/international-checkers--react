@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './CheckersView.css'
+import 'font-awesome/css/font-awesome.min.css'
 
 class CheckersView extends Component {
 
@@ -47,9 +48,9 @@ class CheckersView extends Component {
                         >
                           {
                             square === 'w' ?
-                              'white' :
-                              square === 'b'
-                                ? 'black' :
+                              <i className="fas fa-circle fa-4x fa-light"/> :
+                              square === 'b' ?
+                                <i className="fas fa-circle fa-4x fa-dark"/> :
                                 undefined
                           }
                         </div>

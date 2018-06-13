@@ -21,9 +21,17 @@
 }
 
 .Checkers__Square--Light {
-    background: whitesmoke;
+    background: #f8f8f6;
 }
 
 .Checkers__Square--Dark {
     background: grey;
+}
+
+.fa-light {
+    color: #dfdfdf;
+}
+
+.fa-dark {
+    color: #252525;
 }
