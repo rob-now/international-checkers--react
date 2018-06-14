@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import '../components/CheckersView.css'
-import Piece from "../components/Piece";
+import Piece from '../components/Piece';
 
 const BoardContext = React.createContext()
 
@@ -21,6 +21,14 @@ export class BoardProvider extends Component {
       [0, 'w', 0, 'w', 0, 'w', 0, 'w', 0, 'w'],
       ['w', 0, 'w', 0, 'w', 0, 'w', 0, 'w', 0]
     ],
+    selected: null,
+
+    handleSelected: squareId => {
+      console.log(squareId)
+      return this.setState({
+        selected: squareId
+      })
+    },
 
     makeLineNumbers: () =>
       <div className="Checkers__NumbersLine">
@@ -82,16 +90,21 @@ export class BoardProvider extends Component {
                               (square, squareIndex) =>
                                 <div
                                   key={`Square-${rowIndex}-${squareIndex}`}
-                                  className={rowIndex % 2 === 0 ?
-                                    (squareIndex % 2 === 0 ?
-                                        "Checkers__Square--Light" :
-                                        "Checkers__Square--Dark"
-                                    ) :
-                                    (squareIndex % 2 === 0 ?
-                                        "Checkers__Square--Dark" :
-                                        "Checkers__Square--Light"
-                                    )
+                                  className={
+                                    rowIndex % 2 === 0 ?
+                                      (
+                                        squareIndex % 2 === 0 ?
+                                          "Checkers__Square--Light" :
+                                          "Checkers__Square--Dark"
+                                      ) :
+                                      (
+                                        squareIndex % 2 === 0 ?
+                                          "Checkers__Square--Dark" :
+                                          "Checkers__Square--Light"
+                                      )
+
                                   }
+
                                 >
                                   <Piece
                                     square={square}
