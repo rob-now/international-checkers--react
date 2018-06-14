@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
-import 'font-awesome/css/font-awesome.min.css'
 import '../components/CheckersView.css'
+import Piece from "../components/Piece";
 
 const BoardContext = React.createContext()
 
@@ -93,13 +93,12 @@ export class BoardProvider extends Component {
                                     )
                                   }
                                 >
-                                  {
-                                    square === 'w' ?
-                                      <i className="fas fa-circle fa-3x fa-light"/> :
-                                      square === 'b' ?
-                                        <i className="fas fa-circle fa-3x fa-dark"/> :
-                                        undefined
-                                  }
+                                  <Piece
+                                    square={square}
+                                    squareIndex={squareIndex}
+                                    row={row}
+                                    rowIndex={rowIndex}
+                                  />
                                 </div>
                             )
                           }
