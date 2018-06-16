@@ -21,7 +21,7 @@ export class BoardProvider extends Component {
       [0, 'w', 0, 'w', 0, 'w', 0, 'w', 0, 'w'],
       ['w', 0, 'w', 0, 'w', 0, 'w', 0, 'w', 0]
     ],
-    turn: 'w',
+    turn: 'b',
     selectedY: null,
     selectedX: null,
     moves: [],
@@ -31,22 +31,28 @@ export class BoardProvider extends Component {
       this.setState({
         selectedY: y,
         selectedX: x,
-        // moves: [`${this.state.selected.charAt(0)}`]
       })
-      this.state.handlePossibleMoves(color, y, x)
+      color === 'w' ?
+        this.state.handlePossibleMovesW(color, y, x) :
+        this.state.handlePossibleMovesB(color, y, x)
     },
 
-    handlePossibleMoves: (color, y, x) => {
-      console.log('possible moves log')
+    handlePossibleMovesW: (color, y, x) => {
+      console.log('possible moves W log')
       const upLeft = [`${y - 1}`, `${x - 1 < 0 ? null : this.state.boardInitialState[y - 1][x - 1] === 'w' ? null : x - 1}`]
       const upRight = [`${y - 1}`, `${x + 1 > 9 ? null : this.state.boardInitialState[y - 1][x + 1] === 'w' ? null : x + 1}`]
-      color && color === 'w' ?
-        this.setState({
-          moves: upLeft.concat(upRight)
-        }) :
-        this.setState({
-          moves: [`${y + 1}`, `${x - 1}`]
-        })
+      this.setState({
+        moves: upLeft.concat(upRight)
+      })
+    },
+
+    handlePossibleMovesB: (color, y, x) => {
+      console.log('possible moves B log')
+      const downLeft = [`${y + 1}`, `${x - 1 < 0 ? null : this.state.boardInitialState[y + 1][x - 1] === 'b' ? null : x - 1}`]
+      const downRight = [`${y + 1}`, `${x + 1 > 9 ? null : this.state.boardInitialState[y + 1][x + 1] === 'b' ? null : x + 1}`]
+      this.setState({
+        moves: downLeft.concat(downRight)
+      })
     },
 
     makeLineNumbers: () =>

@@ -6,14 +6,17 @@ import {withBoard} from "../contexts/Board";
 class Piece extends Component {
 
   checkPositionOfSelected = () =>
-    this.props.selectedY && this.props.selectedY && this.props.selectedY === this.props.rowIndex && this.props.selectedX === this.props.squareIndex
+   this.props.selectedY === this.props.rowIndex &&
+    this.props.selectedX === this.props.squareIndex
 
   render() {
     const {square} = this.props
     return (
       <div
         onClick={
-          () => this.props.handleSelected(this.props.turn, this.props.rowIndex, this.props.squareIndex)
+          () => this.props.turn === square ?
+            this.props.handleSelected(this.props.turn, this.props.rowIndex, this.props.squareIndex) :
+            undefined
         }
         className={
           this.props.turn === 'w' && square === 'w' ?
