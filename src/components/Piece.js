@@ -8,11 +8,19 @@ class Piece extends Component {
     const {square} = this.props
     return (
       <div
-        onClick={() => this.props.handleSelected(`${this.props.rowIndex}-${this.props.squareIndex}`)}
+        onClick={
+          () => this.props.handleSelected(`${this.props.rowIndex}-${this.props.squareIndex}`)
+        }
         className={
-          this.props.selected && this.props.selected === `${this.props.rowIndex}-${this.props.squareIndex}` ?
-            "Checkers__Square--Selected" :
-            undefined
+          this.props.turn === 'w' && square === 'w' ?
+            (this.props.selected && this.props.selected === `${this.props.rowIndex}-${this.props.squareIndex}` ?
+              "Checkers__Square--Selected" :
+              undefined) :
+            this.props.turn === 'b' && square === 'b' ?
+              (this.props.selected && this.props.selected === `${this.props.rowIndex}-${this.props.squareIndex}` ?
+                "Checkers__Square--Selected" :
+                undefined) :
+              undefined
         }
       >
         {

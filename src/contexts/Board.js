@@ -21,7 +21,9 @@ export class BoardProvider extends Component {
       [0, 'w', 0, 'w', 0, 'w', 0, 'w', 0, 'w'],
       ['w', 0, 'w', 0, 'w', 0, 'w', 0, 'w', 0]
     ],
+    turn: 'w',
     selected: null,
+    moves: [],
 
     handleSelected: squareId => {
       console.log(squareId)
@@ -29,6 +31,9 @@ export class BoardProvider extends Component {
         selected: squareId
       })
     },
+
+    // handlePossibleMoves: () =>
+    //   ,
 
     makeLineNumbers: () =>
       <div className="Checkers__NumbersLine">
