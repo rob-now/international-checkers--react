@@ -38,9 +38,15 @@ export class BoardProvider extends Component {
 
     handlePossibleMoves: (color, y, x) => {
       console.log('possible moves log')
-      this.setState({
-        moves: [`${y - 1}`, `${x - 1}`]
-      })
+      const upLeft = [`${y - 1}`, `${x - 1 < 0 ? null : this.state.boardInitialState[y - 1][x - 1] === 'w' ? null : x - 1}`]
+      const upRight = [`${y - 1}`, `${x + 1 > 9 ? null : this.state.boardInitialState[y - 1][x + 1] === 'w' ? null : x + 1}`]
+      color && color === 'w' ?
+        this.setState({
+          moves: upLeft.concat(upRight)
+        }) :
+        this.setState({
+          moves: [`${y + 1}`, `${x - 1}`]
+        })
     },
 
     makeLineNumbers: () =>
