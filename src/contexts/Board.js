@@ -39,8 +39,21 @@ export class BoardProvider extends Component {
 
     handlePossibleMovesW: (color, y, x) => {
       console.log('possible moves W log')
-      const upLeft = [`${y - 1}`, `${x - 1 < 0 ? null : this.state.boardInitialState[y - 1][x - 1] === 'w' ? null : x - 1}`]
-      const upRight = [`${y - 1}`, `${x + 1 > 9 ? null : this.state.boardInitialState[y - 1][x + 1] === 'w' ? null : x + 1}`]
+      const upLeft = [
+        `${y - 1}`,
+        `${x - 1 < 0 ?
+          null :
+          this.state.boardInitialState[y - 1][x - 1] === 'w' ?
+            null :
+            x - 1}`
+      ]
+      const upRight = [
+        `${y - 1}`,
+        `${x + 1 > 9 ?
+          null :
+          this.state.boardInitialState[y - 1][x + 1] === 'w' ?
+            null :
+            x + 1}`]
       this.setState({
         moves: upLeft.concat(upRight)
       })
@@ -48,8 +61,22 @@ export class BoardProvider extends Component {
 
     handlePossibleMovesB: (color, y, x) => {
       console.log('possible moves B log')
-      const downLeft = [`${y + 1}`, `${x - 1 < 0 ? null : this.state.boardInitialState[y + 1][x - 1] === 'b' ? null : x - 1}`]
-      const downRight = [`${y + 1}`, `${x + 1 > 9 ? null : this.state.boardInitialState[y + 1][x + 1] === 'b' ? null : x + 1}`]
+      const downLeft = [
+        `${y + 1}`,
+        `${x - 1 < 0 ?
+          null :
+          this.state.boardInitialState[y + 1][x - 1] === 'b' ?
+            null :
+            x - 1}`
+      ]
+      const downRight = [
+        `${y + 1}`,
+        `${x + 1 > 9 ?
+          null :
+          this.state.boardInitialState[y + 1][x + 1] === 'b' ?
+            null :
+            x + 1}`
+      ]
       this.setState({
         moves: downLeft.concat(downRight)
       })
