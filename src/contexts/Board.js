@@ -22,18 +22,26 @@ export class BoardProvider extends Component {
       ['w', 0, 'w', 0, 'w', 0, 'w', 0, 'w', 0]
     ],
     turn: 'w',
-    selected: null,
+    selectedY: null,
+    selectedX: null,
     moves: [],
 
-    handleSelected: squareId => {
-      console.log(squareId)
-      return this.setState({
-        selected: squareId
+    handleSelected: (color, y, x) => {
+      console.log(y, x)
+      this.setState({
+        selectedY: y,
+        selectedX: x,
+        // moves: [`${this.state.selected.charAt(0)}`]
       })
+      this.state.handlePossibleMoves(color, y, x)
     },
 
-    // handlePossibleMoves: () =>
-    //   ,
+    handlePossibleMoves: (color, y, x) => {
+      console.log('possible moves log')
+      this.setState({
+        moves: [`${y - 1}`, `${x - 1}`]
+      })
+    },
 
     makeLineNumbers: () =>
       <div className="Checkers__NumbersLine">

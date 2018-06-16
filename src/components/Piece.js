@@ -4,20 +4,24 @@ import './Piece.css'
 import {withBoard} from "../contexts/Board";
 
 class Piece extends Component {
+
+  checkPositionOfSelected = () =>
+    this.props.selectedY && this.props.selectedY && this.props.selectedY === this.props.rowIndex && this.props.selectedX === this.props.squareIndex
+
   render() {
     const {square} = this.props
     return (
       <div
         onClick={
-          () => this.props.handleSelected(`${this.props.rowIndex}-${this.props.squareIndex}`)
+          () => this.props.handleSelected(this.props.turn, this.props.rowIndex, this.props.squareIndex)
         }
         className={
           this.props.turn === 'w' && square === 'w' ?
-            (this.props.selected && this.props.selected === `${this.props.rowIndex}-${this.props.squareIndex}` ?
+            (this.checkPositionOfSelected() ?
               "Checkers__Square--Selected" :
               undefined) :
             this.props.turn === 'b' && square === 'b' ?
-              (this.props.selected && this.props.selected === `${this.props.rowIndex}-${this.props.squareIndex}` ?
+              (this.checkPositionOfSelected() ?
                 "Checkers__Square--Selected" :
                 undefined) :
               undefined
