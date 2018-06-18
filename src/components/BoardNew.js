@@ -27,10 +27,11 @@ class BoardNew extends Component {
     const isExtremeXAxis = (x === 0 && y > 0 && y < 11) || (x === 11 && y > 0 && y < 11)
     const isExtremeYAxis = (y === 0 && x > 0 && x < 11) || (y === 11 && x > 0 && x < 11)
     const areCorners = (y === 0 && x === 0) || (y === 0 && x === 11) || (y === 11 && x === 0) || (y === 11 && x === 11)
+    const isInnerCell = x > 0 && x < 11 && y > 0 && y < 11
     return <div
       className={
         `board--cell ${
-          x > 0 && x < 11 && y > 0 && y < 11 ?
+          isInnerCell ?
             (
               x % 2 === 0 ?
                 (
