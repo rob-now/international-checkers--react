@@ -24,21 +24,44 @@ class BoardNew extends Component {
   renderCell = (cellId, x, y) => {
     console.log('rendering cell', cellId, x, y)
     const letters = [null, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', null]
+    const isExtremeXAxis = (x === 0 && y > 0 && y < 11) || (x === 11 && y > 0 && y < 11)
+    const isExtremeYAxis = (y === 0 && x > 0 && x < 11) || (y === 11 && x > 0 && x < 11)
+    const areCorners = (y === 0 && x === 0) || (y === 0 && x === 11) || (y === 11 && x === 0) || (y === 11 && x === 11)
     return <div
-      className="board--cell"
-    >
-      {
-        (y === 0 && x > 0 && x < 11) || (y === 11 && x > 0 && x < 11) ?
-          boardSize - x - 1 :
-          (x === 0 && y > 0 && y < 11) || (x === 11 && y > 0 && y < 11) ?
-            letters.filter(
-              (_, index) =>
-                index === y
+      className={
+        `board--cell ${
+          x > 0 && x < 11 && y > 0 && y < 11 ?
+            (
+              x % 2 === 0 ?
+                (
+                  y % 2 === 0 ?
+                    "" :
+                    "board--cell-dark"
+                ) :
+                (
+                  y % 2 === 0 ?
+                    "board--cell-dark" :
+                    ""
+                )
             ) :
-            (y === 0 && x === 0) || (y === 0 && x === 11) || (y === 11 && x === 0) || (y === 11 && x === 11) ?
-              '' :
-              'inner'
+            ""
+          }`
       }
+    >
+      <div>
+        {
+          isExtremeYAxis ?
+            boardSize - x - 1 :
+            isExtremeXAxis ?
+              letters.filter(
+                (_, index) =>
+                  index === y
+              ) :
+              areCorners ?
+                '' :
+                'inner'
+        }
+      </div>
     </div>
   }
 
